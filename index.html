@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ivan & Maty | Pickleball Coaching</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0a0a0a;
+      color: #f0f0f0;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0a2a0a 0%, #0a0a2a 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,200,100,0.08), transparent 70%);
+      top: -100px;
+      left: -100px;
+    }
+
+    .pickle-icon {
+      font-size: 4rem;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 900;
+      letter-spacing: -2px;
+      background: linear-gradient(90deg, #00e676, #69f0ae);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+
+    .hero .tagline {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: #aaa;
+      max-width: 560px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    .cta-btn {
+      background: linear-gradient(90deg, #00e676, #00bcd4);
+      color: #000;
+      font-weight: 800;
+      font-size: 1.1rem;
+      padding: 16px 40px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-block;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,230,118,0.4);
+    }
+
+    /* TEAM */
+    .section {
+      padding: 80px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 60px;
+      color: #00e676;
+      letter-spacing: -1px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+
+    .card {
+      background: #111;
+      border: 1px solid #1e1e1e;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,230,118,0.15);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+
+    .card-img-placeholder {
+      width: 100%;
+      height: 320px;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+    }
+
+    .card-body {
+      padding: 28px;
+    }
+
+    .card-name {
+      font-size: 1.8rem;
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+
+    .card-role {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #00e676;
+      margin-bottom: 16px;
+    }
+
+    .card-bio {
+      color: #bbb;
+      line-height: 1.7;
+      font-size: 0.97rem;
+    }
+
+    /* QUOTE */
+    .quote-section {
+      background: linear-gradient(135deg, #0d1f0d, #0d0d1f);
+      padding: 80px 20px;
+      text-align: center;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .quote {
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #e0e0e0;
+      max-width: 780px;
+      margin: 0 auto 20px;
+      line-height: 1.6;
+    }
+
+    .quote-attr {
+      color: #00e676;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    /* PROGRAM */
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .program-card {
+      background: #111;
+      border: 1px solid #1e1e1e;
+      border-radius: 16px;
+      padding: 32px 24px;
+      transition: border-color 0.3s;
+    }
+
+    .program-card:hover {
+      border-color: #00e676;
+    }
+
+    .program-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    .program-card h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .program-card p {
+      color: #999;
+      line-height: 1.6;
+      font-size: 0.93rem;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #0a2a0a, #0a0a2a);
+    }
+
+    .cta-section h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+
+    .cta-section p {
+      color: #aaa;
+      margin-bottom: 36px;
+      font-size: 1.1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: #555;
+      font-size: 0.85rem;
+      background: #050505;
+    }
+
+    footer span {
+      color: #00e676;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="pickle-icon">🏓</div>
+    <h1>Ivan & Maty</h1>
+    <p class="tagline">
+      Elite group pickleball coaching, followed by a gentle and loving massage session to restore your body and soul.
+    </p>
+    <a href="#program" class="cta-btn">Book a Session</a>
+  </section>
+
+  <!-- TEAM -->
+  <div class="section">
+    <h2 class="section-title">Meet the Coaches</h2>
+    <div class="team-grid">
+
+      <div class="card">
+        <img src="ivan.jpg" alt="Ivan" class="card-img" />
+        <div class="card-body">
+          <div class="card-name">Ivan</div>
+          <div class="card-role">The Legend. The Mentor. The Gentle Hands and Soft Touch.</div>
+          <p class="card-bio">
+            Decades on the court, an encyclopedic mind for the game, and a patience that makes even beginners feel like champions. He is the foundation this whole program is built on. If pickleball has a wise elder, it is Ivan. He also specialises in helping people hit the ball into the net.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="maty.jpg" alt="Maty" class="card-img" />
+        <div class="card-body">
+          <div class="card-name">Maty</div>
+          <div class="card-role">The Athlete. The Energy.</div>
+          <p class="card-bio">
+            Maty brings the fire. With athletic precision and a competitive edge honed across multiple racket sports, he pushes every player to find another gear. Fast footwork, sharp angles, relentless drills. You will leave the court a better player every single time.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="quote-section">
+    <p class="quote">
+      "Ivan taught me everything I know. The court is where it starts. The recovery is where the magic happens."
+    </p>
+    <div class="quote-attr">Josh Penny, student and believer</div>
+  </div>
+
+  <!-- PROGRAM -->
+  <div class="section" id="program">
+    <h2 class="section-title">The Full Experience</h2>
+    <div class="program-grid">
+
+      <div class="program-card">
+        <div class="program-icon">🏓</div>
+        <h3>Group Pickleball Coaching</h3>
+        <p>
+          Small groups, big results. Ivan and Maty run structured sessions covering footwork, dinking, court positioning, and competitive strategy. All skill levels welcome.
+        </p>
+      </div>
+
+      <div class="program-card">
+        <div class="program-icon">♨️</div>
+        <h3>Spa Recovery</h3>
+        <p>
+          After the court, you cool down in style. Hot tub, sauna, and cold plunge. Your body worked hard. Now give it the reset it deserves.
+        </p>
+      </div>
+
+      <div class="program-card">
+        <div class="program-icon">🤲</div>
+        <h3>Gentle and Loving Massage</h3>
+        <p>
+          Ivan closes out every session with a gentle, restorative treatment. His warm, magical hands work through every knot with a care and tenderness that goes far beyond the physical. Loving, present, and deeply healing. Muscle soreness gone. Mind clear. Soul restored.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Ready to Play?</h2>
+    <p>Join Ivan, Maty, and a crew who love the game as much as the recovery.</p>
+    <a href="mailto:steve@scalemyclinic.com" class="cta-btn">Get in Touch</a>
+  </section>
+
+  <footer>
+    Built with love by <span>Ivan & Maty Pickleball</span>. See you on the court.
+  </footer>
+
+</body>
+</html>
